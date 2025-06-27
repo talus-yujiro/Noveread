@@ -8,6 +8,8 @@ on:
 jobs:
   build-linux:
     runs-on: ubuntu-latest
+    env:
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}   # ← これが重要
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
