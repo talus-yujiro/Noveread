@@ -15,7 +15,8 @@ jobs:
           node-version: 20
       - run: npm install
       - run: npm run dist
-      - uses: softprops/action-gh-release@v1
+      - name: Upload Linux release
+        uses: softprops/action-gh-release@v1
         with:
           files: dist/*.AppImage
         env:
@@ -30,7 +31,8 @@ jobs:
           node-version: 20
       - run: npm install
       - run: npm run dist
-      - uses: softprops/action-gh-release@v1
+      - name: Upload Windows release
+        uses: softprops/action-gh-release@v1
         with:
           files: dist/*.exe
         env:
