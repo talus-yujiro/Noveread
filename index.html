@@ -1,0 +1,129 @@
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline';">
+    <title>Noveread</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header class="header">
+        <!-- 必要に応じて要素追加 -->
+    </header>
+
+    <main class="main">
+        <section id="novelList" class="tab tab--active">
+            <!-- 小説一覧 -->
+        </section>
+
+        <section id="webView" class="tab">
+            <input type="url" id="webViewUrl" class="webview__url" placeholder="https://www.google.com/" />
+            <span id="searchButton" class="webview__search-button">&#x1F50D;</span>
+            <webview id="webViewFrame" src="https://www.google.com/" class="webview__frame"></webview>
+        </section>
+
+        <section id="setting" class="tab">
+            <p>
+                We are using Node.js <span id="node-version"></span>,<br />
+                Chromium <span id="chrome-version"></span>,<br />
+                and Electron <span id="electron-version"></span>.
+            </p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div id="novelListTab" class="menu__item menu__item--active" onclick="switchTab('novelList')">
+            <img src="img/icons/book-solid.svg" alt="本" class="menu__icon">
+            <p class="menu__label">小説一覧</p>
+        </div>
+
+        <div id="webViewTab" class="menu__item" onclick="switchTab('webView')">
+            <img src="img/icons/globe-solid.svg" alt="地球" class="menu__icon">
+            <p class="menu__label">WebView</p>
+        </div>
+
+        <div id="emptyTab" class="menu__item">
+            <!-- 空のタブ -->
+        </div>
+
+        <div id="settingTab" class="menu__item" onclick="switchTab('setting')">
+            <img src="img/icons/gear-solid.svg" alt="歯車" class="menu__icon">
+            <p class="menu__label">設定</p>
+        </div>
+    </footer>
+
+    <script>
+        function switchTab(tabId) {
+            const allTabs = document.querySelectorAll(".tab");
+            const allMenuItems = document.querySelectorAll(".menu__item");
+
+            allTabs.forEach(tab => {
+                tab.classList.remove("tab--active");
+            });
+
+            allMenuItems.forEach(item => {
+                item.classList.remove("menu__item--active");
+            });
+
+            const targetTab = document.getElementById(tabId);
+            const targetMenuItem = document.getElementById(tabId + 'Tab');
+
+            if (targetTab) {
+                targetTab.classList.add("tab--active");
+            }
+
+            if (targetMenuItem) {
+                targetMenuItem.classList.add("menu__item--active");
+            }
+        }
+
+        document.getElementById("searchButton").addEventListener("click", () => {
+            webviewSearch();
+        });
+
+        document.getElementById("webViewUrl").addEventListener("keydown", (e) => {
+            if (e.key === 'Enter') {
+                webviewSearch();
+            }
+        });
+
+        function webviewSearch() {
+            const url = document.getElementById("webViewUrl").value;
+            const webView = document.getElementById("webViewFrame");
+
+            const finalUrl = url.startsWith('http://') || url.startsWith('https://')
+                ? url
+                : `https://${url}`;
+
+            webView.src = finalUrl;
+
+            webView.addEventListener('dom-ready', async () => {
+                // 表示領域の幅（px）
+                const containerWidth = webview.clientWidth;
+
+                // Webページの横幅を取得（JavaScriptをWebView内で実行）
+                const pageWidth = await webview.executeJavaScript('document.documentElement.scrollWidth');
+
+                // ズーム倍率 = コンテナ幅 / ページ幅
+                const zoomFactor = Math.min(1, containerWidth / pageWidth); // 最大1.0（それ以上拡大しない）
+
+                // ズーム倍率を設定
+                webview.setZoomFactor(zoomFactor);
+            });
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            const webView = document.getElementById("webViewFrame").shadowRoot;
+            if (webView) {
+                const iframe = webView.querySelector('iframe');
+                if (iframe) {
+                    iframe.style.display = "block";
+                    iframe.style.height = '100%';
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

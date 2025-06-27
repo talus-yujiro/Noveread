@@ -1,0 +1,59 @@
+{
+  "name": "noveread",
+  "version": "1.0.0",
+  "description": "read and search novel",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dist": "electron-builder"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/talus-yujiro/Noveread.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/talus-yujiro/Noveread/issues"
+  },
+  "homepage": "https://github.com/talus-yujiro/Noveread#readme",
+  "build": {
+    "appId": "com.talus.noveread",
+    "productName": "Noveread",
+    "asar": true,
+    "files": [
+      "**/*"
+    ],
+    "directories": {
+      "buildResources": "icons"
+    },
+    "linux": {
+      "target": [
+        "AppImage"
+      ],
+      "icon": "icons/icon.png"
+    },
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "icon": "icons/icon.ico"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true
+    }
+  },
+  "devDependencies": {
+    "electron": "^37.0.0",
+    "electron-builder": "^24.0.0"
+  }
+}
