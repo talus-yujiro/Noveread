@@ -31,9 +31,13 @@
     },
     "linux": {
       "target": [
-        "AppImage"
+        "AppImage",
+        "deb"
       ],
-      "icon": "icons/icon.png"
+      "icon": "icons/icon.png",
+      "category": "Utility",
+      "maintainer": "talus <daise.talus@gmail.com>",
+      "description": "Noveread is a reader application."
     },
     "win": {
       "target": [
