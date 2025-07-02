@@ -4,6 +4,7 @@
 
 [English](/README.md)  
 [Japanese](/README/README-ja.md)
+[Chinese](/README/README-zh-CN.md)
 
 ## Overview
 
@@ -35,7 +36,7 @@ npm run dist
 An executable file should be created in the dist folder.
 
 ## Roadmap
-- [x] v0.0.0 Basic startup achieved
+- [x] v0.0.1 Basic startup achieved
 - [ ] v0.5.0 Implement download processing
 - [ ] v1.0.0 Make it usable as a full application
 

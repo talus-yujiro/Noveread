@@ -2,9 +2,9 @@
 
 ## 言語
 
-[English](/README.md)
-
-[Japanese](/README/README-ja.md)
+[英語](/README.md)
+[日本語](/README/README-ja.md)
+[中国語](/README/README-zh-CN.md)
 
 ## 概要
 
@@ -36,7 +36,7 @@ npm run dist
 distフォルダの中に実行ファイルができるはずです。
 
 ## ロードマップ
-- [x] v0.0.0 とりあえず起動できる
+- [x] v0.0.1 とりあえず起動できる
 - [ ] v0.5.0 ダウンロード処理を作成
 - [ ] v1.0.0 アプリとして使用できるようにする
 
