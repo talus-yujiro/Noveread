@@ -3,7 +3,7 @@
 ## Language
 
 [English](/README.md)  
-[Japanese](/README/README-ja.md)
+[Japanese](/README/README-ja.md)  
 [Chinese](/README/README-zh-CN.md)
 
 ## Overview

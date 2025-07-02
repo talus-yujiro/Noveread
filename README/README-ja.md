@@ -2,8 +2,8 @@
 
 ## 言語
 
-[英語](/README.md)
-[日本語](/README/README-ja.md)
+[英語](/README.md)  
+[日本語](/README/README-ja.md)  
 [中国語](/README/README-zh-CN.md)
 
 ## 概要

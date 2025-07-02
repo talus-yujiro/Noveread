@@ -3,7 +3,7 @@
 ## 语言
 
 [英文](/README.md)  
-[日文](/README/README-ja.md)
+[日文](/README/README-ja.md)  
 [中文](/README/README-zh-CN.md)
 
 ## 概要
