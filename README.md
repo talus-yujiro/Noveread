@@ -35,10 +35,9 @@ npm run dist
 An executable file should be created in the dist folder.
 
 ## Roadmap
-
-- [x] v1.0.0 Basic startup achieved  
-- [ ]  
-- [ ] v1.8.0 Make it usable as an application
+- [x] v0.0.0 Basic startup achieved
+- [ ] v0.5.0 Implement download processing
+- [ ] v1.0.0 Make it usable as a full application
 
 ## Recent Changes
 
